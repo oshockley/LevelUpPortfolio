@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+/* Base */
+.about {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #0a0a0a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffd5;
+  padding: 40px;
+  overflow: hidden;
+}
+
+/* Scanlines */
+.scanlines {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* Panel */
+.about-panel {
+  background: rgba(0, 255, 200, 0.03);
+  border: 1px solid rgba(0, 255, 200, 0.2);
+  backdrop-filter: blur(12px);
+  padding: 60px;
+  border-radius: 24px;
+  z-index: 2;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.15);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glitch Title */
+.glitch-title {
+  font-size: 2.5rem;
+  color: #00ffd5;
+  position: relative;
+  text-shadow: 0 0 4px #00ffd5, 0 0 10px #0ff;
+}
+.glitch-title::before, .glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #00fff2;
+}
+.glitch-title::before {
+  animation: glitchTop 1.2s infinite linear;
+  top: -2px;
+}
+.glitch-title::after {
+  animation: glitchBottom 1.2s infinite linear;
+  top: 2px;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 80% 0); }
+  50% { clip-path: inset(10% 0 70% 0); }
+  100% { clip-path: inset(5% 0 75% 0); }
+}
+@keyframes glitchBottom {
+  0% { clip-path: inset(80% 0 0 0); }
+  50% { clip-path: inset(70% 0 10% 0); }
+  100% { clip-path: inset(75% 0 5% 0); }
+}
+
+/* Typewriter effect */
+.typewriter {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin: 30px 0;
+  min-height: 80px;
+  white-space: pre-line;
+  letter-spacing: 1px;
+}
+
+/* Cards Grid */
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.holo-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 280px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.08);
+}
+
+.holo-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Floating motion */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

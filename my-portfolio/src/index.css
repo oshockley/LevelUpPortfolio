@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+
+  /* ✅ Tiled 4x4 grid of image.png */
+  background-image: url('./assets/Image.jpg'); /* Make sure this path is correct */
+  background-repeat: repeat;
+  background-size: 25% 25%; /* 4 tiles horizontally and 4 vertically */
+  background-position: top left;
+}

@@ -1,0 +1,18 @@
+.character-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+  width: 64px;
+  height: 64px;
+  z-index: 5;
+}
+
+/* Replace with your actual sprite sheet dimensions */
+.character-sprite {
+  width: 64px;
+  height: 64px;
+  background-image: url('/assets/character-sprite.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  image-rendering: pixelated; /* If using pixel art */
+}

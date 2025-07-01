@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+.projects-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #050505, #0d0f1a);
+  color: #00fff0;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  text-shadow: 0 0 12px #00fff0;
+  letter-spacing: 3px;
+  z-index: 2;
+  animation: flicker 2s infinite alternate;
+}
+
+/* Glitching scanline background */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+  animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+@keyframes flicker {
+  0% { opacity: 0.85; text-shadow: 0 0 6px #00fff0; }
+  100% { opacity: 1; text-shadow: 0 0 14px #00fff0, 0 0 4px #0ff; }
+}
+
+/* Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+/* Level-style card */
+.project-card {
+  position: relative;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 10px rgba(0,255,255,0.05);
+}
+
+.project-card:hover {
+  transform: scale(1.03) rotateX(3deg) rotateY(2deg);
+  box-shadow: 0 0 24px rgba(0,255,255,0.3);
+  border-color: rgba(0,255,255,0.3);
+}
+
+/* Hover particle effect (optional) */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 40%, rgba(0,255,255,0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* Text */
+.repo-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+.repo-desc {
+  font-size: 1rem;
+  color: #c0f0ff;
+  min-height: 60px;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  color: #00ffd5;
+  font-size: 0.9rem;
+}
+
+/* Holographic bar */
+.progress-bar {
+  height: 4px;
+  width: 100%;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00fff0, #1affd0);
+  animation: fill 1.4s ease-out forwards;
+  transition: width 0.5s ease;
+}
+
+@keyframes fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Optional: lock effect for low-star projects */
+.project-card.locked {
+  filter: grayscale(1) brightness(0.4);
+  pointer-events: none;
+  position: relative;
+}
+
+.project-card.locked::before {
+  content: "🔒 LOCKED";
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 0.85rem;
+  color: #ff0040;
+}
